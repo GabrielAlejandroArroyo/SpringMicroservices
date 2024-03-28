@@ -1,0 +1,50 @@
+#Para que no se registre en el servidor de Eureka (No necesito que se registre en el eureka
+eureka:
+  client:
+    register-with-eureka: false
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: students
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/student/**
+        - id: courses
+          uri: http://localhost:9090
+          predicates:
+            - Path=/api/course/**
+        - id: countries
+          uri: http://localhost:6090
+          predicates:
+            - Path=/api/catalog/country/**
+        - id: cities
+          uri: http://localhost:6090
+          predicates:
+            - Path=/api/catalog/city/**
+        - id: neighborhoods
+          uri: http://localhost:6090
+          predicates:
+            - Path=/api/catalog/neighborhood/**
+        - id: states
+          uri: http://localhost:6090
+          predicates:
+            - Path=/api/catalog/state/**
+        - id: dfcs
+          uri: http://localhost:7090
+          predicates:
+            - Path=/api/dfc/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # Exponer todos los endpoints de Actuator
