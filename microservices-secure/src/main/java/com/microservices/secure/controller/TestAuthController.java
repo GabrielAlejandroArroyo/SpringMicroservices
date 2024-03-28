@@ -34,28 +34,28 @@ public class TestAuthController {
     @GetMapping("/get")
     @PreAuthorize("hasAuthority('READ')")
     public String helloGet(){
-        return "Hello world - GET";
+        return "Hello world hasAuthority - GET";
     }
     @PostMapping("/post")
     @PreAuthorize("hasAuthority('CREATE')")
     public String helloPost(){
-        return "Hello world hasAuthority- POST";
+        return "Hello world hasAuthority - POST";
     }
     @PutMapping("/put")
     @PreAuthorize("hasAuthority('UPDATE')")
     public String helloPut(){
-        return "Hello world hasAuthority- PUT";
+        return "Hello world hasAuthority - PUT";
     }
     @DeleteMapping("/delete")
     @PreAuthorize("hasAuthority('DELETE')")
     public String helloDelete(){
-        return "Hello world hasAuthority- DELETE";
+        return "Hello world hasAuthority - DELETE";
     }
 
     @PatchMapping("/patch")
     @PreAuthorize("hasAuthority('REFACTOR')")
     public String helloPatch(){
-        return "Hello world hasAuthority- PATCH";
+        return "Hello world hasAuthority - PATCH";
     }
 
     ///////////////////////////
@@ -88,8 +88,6 @@ public class TestAuthController {
     public String helloPatchRoles(){
         return "Hello world hasRole- PATCH";
     }
-
-
 
 
 }
